@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import List
-from ..entities import UnionEntity
-from dtos import UnionPostDto, UnionUpdateDto
+from src.domain.entities import UnionEntity
+from ..dtos import UnionPostDto, UnionUpdateDto
 
 class IRepository(ABC):
     @abstractmethod
@@ -22,4 +22,12 @@ class IRepository(ABC):
 
     @abstractmethod
     def delete(self, id: int) -> UnionEntity:
+        raise NotImplementedError
+
+    @abstractmethod
+    def commit(self):
+        raise NotImplementedError
+
+    @abstractmethod
+    def rollback(self):
         raise NotImplementedError
