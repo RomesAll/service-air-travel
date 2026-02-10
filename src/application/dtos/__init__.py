@@ -19,6 +19,13 @@ UnionUpdateDto = Union[
     TripDtoUpdate,
 ]
 
+UnionDto = Union[
+    CompanyDtoGet,
+    PassInTripDtoGet,
+    PassengerDtoGet,
+    TripDtoGet
+]
+
 __all__ = (
     'CompanyDtoPost',
     'CompanyDtoGet',
@@ -35,4 +42,5 @@ __all__ = (
     'TripDtoUpdate',
     'UnionPostDto',
     'UnionUpdateDto',
+    'UnionDto'
 )
