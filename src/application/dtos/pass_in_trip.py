@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from src.domain.entities import PassengerId, TripId
 
 class PassInTripDtoPost(BaseModel):
@@ -9,5 +9,7 @@ class PassInTripDtoPost(BaseModel):
 class PassInTripDtoGet(PassInTripDtoPost):
     id: int
 
-class PassInTripDtoUpdate(PassInTripDtoPost):
-    pass
+class PassInTripDtoUpdate(BaseModel):
+    trip: TripId = Field(default=None)
+    passenger: PassengerId = Field(default=None)
+    place: str = Field(default=None)
