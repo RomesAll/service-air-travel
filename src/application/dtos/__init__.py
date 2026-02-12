@@ -2,7 +2,6 @@ from .company import *
 from .pass_in_trip import *
 from .trip import *
 from .passenger import *
-from .town import *
 from typing import Union
 
 UnionPostDto = Union[
@@ -36,7 +35,6 @@ __all__ = (
     'PassengerDtoPost',
     'PassengerDtoGet',
     'PassengerDtoUpdate',
-    'TownDto',
     'TripDtoPost',
     'TripDtoGet',
     'TripDtoUpdate',

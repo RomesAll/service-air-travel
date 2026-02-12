@@ -2,3 +2,4 @@
 /__pycache__/*.py
 /.venv/
 /.env
+/src/infrastructures/db/migrations/versions/
