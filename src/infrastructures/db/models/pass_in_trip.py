@@ -6,4 +6,4 @@ from src.domain.entities import TripId, PassengerId
 class PassInTrip(Base):
     trip: Mapped[TripId] = mapped_column(ForeignKey('trip.id', ondelete='CASCADE'))
     passenger: Mapped[PassengerId] = mapped_column(ForeignKey('passenger.id', ondelete='CASCADE'))
-    place: str
+    place: Mapped[str]
