@@ -1,7 +1,6 @@
 from abc import ABC, abstractmethod
 from typing import List
 from src.domain.entities import UnionEntity
-from ..dtos import UnionPostDto, UnionUpdateDto
 
 class IRepository(ABC):
     @abstractmethod
@@ -13,9 +12,13 @@ class IRepository(ABC):
         raise NotImplementedError
 
     @abstractmethod
-    def add(self, new_object: UnionPostDto) -> UnionEntity | None:
+    def add(self, new_object: dict) -> UnionEntity | None:
         raise NotImplementedError
 
     @abstractmethod
-    def update(self, id: int, update_obj: UnionUpdateDto) -> UnionEntity | None:
+    def update(self, id: int, update_obj: dict) -> UnionEntity | None:
+        raise NotImplementedError
+
+    @abstractmethod
+    def delete(self, id: int) -> UnionEntity | None:
         raise NotImplementedError
