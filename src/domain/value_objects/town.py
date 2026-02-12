@@ -2,9 +2,11 @@ from dataclasses import dataclass
 from ..exceptions import InvalidTownError
 import re
 
-@dataclass(frozen=True, order=True, kw_only=True, slots=True)
+SEPARATION = '-'
+
+@dataclass(frozen=False, order=True, kw_only=True, slots=True)
 class Town:
-    __separation: str = '-'
+    separation: str = SEPARATION
     name: str
     utc: str
     airport: str
@@ -17,13 +19,5 @@ class Town:
         if not(self.airport and len(self.airport) >= 2):
             raise InvalidTownError(f"Airport cannot be none or incorrect, airport: {self.airport}")
 
-    @property
-    def separation(self) -> str:
-        return Town.__separation
-
-    @separation.setter
-    def separation(self, value):
-        Town.__separation = value
-
     def get_town_info(self):
-        return f'{Town.__separation}'.join([self.name, self.utc, self.airport])
+        return f'{self.separation}'.join([self.name, self.utc, self.airport])
