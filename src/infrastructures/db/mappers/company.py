@@ -4,13 +4,15 @@ from src.infrastructures.db.models import Company
 
 class CompanyMapperOrm(MapperOrm):
 
-    def to_entity(self, orm_model: Company) -> CompanyEntity:
+    @classmethod
+    def to_entity(cls, orm_model: Company) -> CompanyEntity:
         return CompanyEntity(
             id=orm_model.id,
             name=orm_model.name,
         )
 
-    def to_orm_model(self, entity: CompanyEntity) -> Company:
+    @classmethod
+    def to_orm_model(cls, entity: CompanyEntity) -> Company:
         return Company(
             id=entity.id,
             name=entity.name,

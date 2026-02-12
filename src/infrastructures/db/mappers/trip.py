@@ -1,12 +1,14 @@
+from src.domain.value_objects.town import SEPARATION
 from src.application.interfases.mappers_orm import MapperOrm
 from src.domain import TripEntities, Town
 from src.infrastructures.db.models import Trip
 
 class TripMapperOrm(MapperOrm):
 
-    def to_entity(self, orm_model: Trip) -> TripEntities:
-        town_from_info = orm_model.town_from.split(str(Town.separation))
-        town_to_info = orm_model.town_to.split(str(Town.separation))
+    @classmethod
+    def to_entity(cls, orm_model: Trip) -> TripEntities:
+        town_from_info = orm_model.town_from.split(SEPARATION)
+        town_to_info = orm_model.town_to.split(SEPARATION)
         return TripEntities(
             id=orm_model.id,
             company=orm_model.company,
@@ -17,7 +19,8 @@ class TripMapperOrm(MapperOrm):
             time_in=orm_model.time_in,
         )
 
-    def to_orm_model(self, entity: TripEntities) -> Trip:
+    @classmethod
+    def to_orm_model(cls, entity: TripEntities) -> Trip:
         return Trip(
             id=entity.id,
             company=entity.company,
